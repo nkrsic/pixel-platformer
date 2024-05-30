@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://KnightAttack.tscn" type="PackedScene" id=2]
+[ext_resource path="res://KnightWalk.tscn" type="PackedScene" id=3]
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+position = Vector2( -6, 72 )
+tile_data = PoolIntArray( 196610, 0, 0, 262149, 0, 0, 458760, 0, 0, 458763, 0, 0, 458766, 0, 0, 458769, 0, 0, 458772, 0, 0, 458775, 0, 0, 458778, 0, 0, 589835, 0, 0 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+
+[node name="KnightWalk" parent="." instance=ExtResource( 3 )]
+position = Vector2( 82, -40 )
