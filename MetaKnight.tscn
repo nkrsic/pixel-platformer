@@ -1,9 +1,9 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://_Run.png" type="Texture" id=1]
 [ext_resource path="res://_Idle.png" type="Texture" id=2]
 [ext_resource path="res://MetaKnight.gd" type="Script" id=3]
-[ext_resource path="res://idle_and_run_and_attack_combo.png" type="Texture" id=4]
+[ext_resource path="res://idle_run_combo_crouchwalk.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -114,6 +114,12 @@ animation = "combo_left"
 [sub_resource type="AnimationNodeAnimation" id=40]
 animation = "combo_right"
 
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "crouchwalk_left"
+
+[sub_resource type="AnimationNodeAnimation" id=58]
+animation = "crouchwalk_right"
+
 [sub_resource type="AnimationNodeAnimation" id=32]
 animation = "idle"
 
@@ -155,20 +161,44 @@ animation = "run_left"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=55]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=67]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=68]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
 [sub_resource type="AnimationNodeStateMachine" id=22]
 states/combo_left/node = SubResource( 49 )
 states/combo_left/position = Vector2( 783, 21 )
 states/combo_right/node = SubResource( 40 )
 states/combo_right/position = Vector2( 798.556, 193 )
+states/crouchwalk_left/node = SubResource( 64 )
+states/crouchwalk_left/position = Vector2( 323, -71.3333 )
+states/crouchwalk_right/node = SubResource( 58 )
+states/crouchwalk_right/position = Vector2( 292.333, 250.333 )
 states/idle/node = SubResource( 32 )
-states/idle/position = Vector2( 279, 105.222 )
+states/idle/position = Vector2( 152.333, 78.5555 )
 states/run/node = SubResource( 33 )
-states/run/position = Vector2( 476.333, 221.667 )
+states/run/position = Vector2( 545.667, 324.333 )
 states/run_left/node = SubResource( 36 )
-states/run_left/position = Vector2( 469.222, 5 )
-transitions = [ "idle", "run", SubResource( 34 ), "run", "idle", SubResource( 35 ), "idle", "run_left", SubResource( 37 ), "run_left", "idle", SubResource( 38 ), "idle", "combo_right", SubResource( 41 ), "combo_right", "idle", SubResource( 42 ), "run", "combo_right", SubResource( 43 ), "combo_right", "run", SubResource( 44 ), "run_left", "combo_right", SubResource( 45 ), "combo_right", "run_left", SubResource( 48 ), "combo_left", "run_left", SubResource( 50 ), "run_left", "combo_left", SubResource( 51 ), "combo_left", "run", SubResource( 52 ), "run", "combo_left", SubResource( 53 ), "combo_right", "combo_left", SubResource( 54 ), "combo_left", "combo_right", SubResource( 55 ) ]
+states/run_left/position = Vector2( 539.889, -61.6667 )
+transitions = [ "idle", "run", SubResource( 34 ), "run", "idle", SubResource( 35 ), "idle", "run_left", SubResource( 37 ), "run_left", "idle", SubResource( 38 ), "idle", "combo_right", SubResource( 41 ), "combo_right", "idle", SubResource( 42 ), "run", "combo_right", SubResource( 43 ), "combo_right", "run", SubResource( 44 ), "run_left", "combo_right", SubResource( 45 ), "combo_right", "run_left", SubResource( 48 ), "combo_left", "run_left", SubResource( 50 ), "run_left", "combo_left", SubResource( 51 ), "combo_left", "run", SubResource( 52 ), "run", "combo_left", SubResource( 53 ), "combo_right", "combo_left", SubResource( 54 ), "combo_left", "combo_right", SubResource( 55 ), "idle", "crouchwalk_right", SubResource( 59 ), "crouchwalk_right", "idle", SubResource( 60 ), "crouchwalk_right", "run", SubResource( 61 ), "run", "crouchwalk_right", SubResource( 62 ), "crouchwalk_left", "idle", SubResource( 65 ), "idle", "crouchwalk_left", SubResource( 66 ), "crouchwalk_left", "run_left", SubResource( 67 ), "run_left", "crouchwalk_left", SubResource( 68 ), "crouchwalk_left", "crouchwalk_right", SubResource( 69 ), "crouchwalk_right", "crouchwalk_left", SubResource( 70 ) ]
 start_node = "idle"
-graph_offset = Vector2( 4, -50 )
+graph_offset = Vector2( -56, -121 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
@@ -267,6 +297,52 @@ tracks/1/keys = {
 "values": [ false, false ]
 }
 
+[sub_resource type="Animation" id=63]
+resource_name = "crouchwalk_left"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MetaSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ), Vector2( 1, 3 ), Vector2( 2, 3 ), Vector2( 3, 3 ), Vector2( 4, 3 ), Vector2( 5, 3 ), Vector2( 6, 3 ), Vector2( 7, 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MetaSprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ true, true ]
+}
+
+[sub_resource type="Animation" id=57]
+resource_name = "crouchwalk_right"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MetaSprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 3 ), Vector2( 1, 3 ), Vector2( 2, 3 ), Vector2( 3, 3 ), Vector2( 4, 3 ), Vector2( 5, 3 ), Vector2( 6, 3 ), Vector2( 7, 3 ) ]
+}
+
 [sub_resource type="Animation" id=30]
 resource_name = "idle"
 loop = true
@@ -359,8 +435,8 @@ parameters/playback = SubResource( 23 )
 position = Vector2( 123, 259 )
 texture = ExtResource( 4 )
 hframes = 10
-vframes = 3
-frame = 3
+vframes = 4
+frame = 5
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 reset_on_save = false
@@ -368,6 +444,8 @@ method_call_mode = 1
 anims/RESET = SubResource( 29 )
 anims/combo_left = SubResource( 56 )
 anims/combo_right = SubResource( 47 )
+anims/crouchwalk_left = SubResource( 63 )
+anims/crouchwalk_right = SubResource( 57 )
 anims/idle = SubResource( 30 )
 anims/run = SubResource( 31 )
 anims/run_left = SubResource( 39 )
